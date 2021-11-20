@@ -1,38 +1,43 @@
 <?php
+include 'dotenv/dotenv.php';
+$dotenv = new DotEnv();
+$dotenv->load();
 include "db.php";
 include "function.php";
+include "core/UserModel.php";
 $jsonArray = array(); 
 $jsonArray["error"] = FALSE; 
 $_code = 200; 
-$_method = $_SERVER["REQUEST_METHOD"]; 
-function ser(){
-	print("Vareable: SERVER\n");
-	print_r($_SERVER);
-	print("Vareable: GET\n");
-	print_r($_GET);
-	print("Vareable: POST\n");
-	print_r($_POST);
-	print("Vareable: PUT\n");
-	print_r($_PUT);
-	print("Vareable: DELETE\n");
-	print_r($_DELETE);
+$data = json_decode(file_get_contents("php://input"));  
+$resources = array();
+function get($in_data){
+    return;
 }
-switch($_method){
+function post($in_data){
+    return;
+}
+function patch($in_data){
+    return;
+}
+function delete($in_data){
+    return;
+}
+
+switch($_SERVER["REQUEST_METHOD"]){
     case "GET":
-        print("Method: GET\n");
-	ser();
+        
         break;
     case "POST":
-        print("Method: POST\n");
-	ser();
+        
         break;
-    case "PUT":
-        print("Method: PUT\n");
-	ser();
+    case "PATCH":
+        
         break;
     case "DELETE":
-        print("Method: DELETE\n");
-	ser();
+        
         break;
 }
+print("<pre>");
+print_r($GLOBALS);
+print("</pre>");
 ?>
