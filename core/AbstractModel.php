@@ -1,10 +1,15 @@
 <?php
-class ResourceModel{
-    private $_url
-    private $_table
-    function __construct($url, $table){
+abstract class AbstractModel{
+    private $_url;
+    private $_table;
+    function __construct($url, $table = NULL){
         $this->_url = $url;
-        $this->_table = $table;
+        if ($table != NULL){
+            $this->_table = $table;
+        }
+        else{
+            $this->_table = get_called_class();
+        }
     }
     function getUrl(){
         return $this->_url;
