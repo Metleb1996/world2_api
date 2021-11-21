@@ -2,7 +2,9 @@
 abstract class AbstractModel{
     private $_url;
     private $_table;
-    function __construct($url, $table = NULL){
+    private $_db;
+    function __construct($db, $url, $table = NULL){
+        $this->_db = $db;
         $this->_url = $url;
         if ($table != NULL){
             $this->_table = $table;
