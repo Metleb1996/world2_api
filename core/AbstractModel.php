@@ -1,11 +1,13 @@
 <?php
 abstract class AbstractModel{
-    private $_url;
-    private $_table;
-    private $_db;
-    function __construct($db, $url, $table = NULL){
-        $this->_db = $db;
+    protected $_url;
+    protected $_table;
+    protected $_db;
+    protected $_data;
+    public function __construct($idb, $url, $table = NULL){
+        $this->_db = $idb;
         $this->_url = $url;
+        $this->_data = array();
         if ($table != NULL){
             $this->_table = $table;
         }
@@ -13,10 +15,10 @@ abstract class AbstractModel{
             $this->_table = get_called_class();
         }
     }
-    function getUrl(){
+    public function getUrl(){
         return $this->_url;
     }
-    function getTable(){
+    public function getTable(){
         return $this->_table;
     }
     abstract protected function get($in_data);
