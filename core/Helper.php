@@ -1,9 +1,9 @@
 <?php 
 class Helper{
     public static function userName($s) {
-        $tr = array('ş','Ş','ı','İ','ğ','Ğ','ü','Ü','ö','Ö','Ç','ç');
-        $eng = array('s','s','i','i','g','g','u','u','o','o','c','c');
-        $s = str_replace($tr,$eng,$s);
+        $az = array('ş','Ş','ı','İ','ğ','Ğ','ü','Ü','ö','Ö','Ç','ç','Ə','ə');
+        $eng = array('s','s','i','i','g','g','u','u','o','o','c','c','e','e');
+        $s = str_replace($az,$eng,$s);
         $s = strtolower($s);
         $s = preg_replace('/&.+?;/', '', $s);
         $s = preg_replace('/[^%a-z0-9 _-]/', '', $s);
