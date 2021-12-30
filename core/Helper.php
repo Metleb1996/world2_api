@@ -1,8 +1,8 @@
 <?php 
 class Helper{
-    public static function checkArrayKeys($arr, $keys){
+    public static function checkArrayKeys($arr, $keys){ 
         foreach($keys as $key){
-            if(!(array_key_exists($key, $arr))){
+            if((!(array_key_exists($key, $arr))) or (strlen($arr[$key]) == 0)){
                 return array("status"=>FALSE, "key"=>$key);
             }
         }
