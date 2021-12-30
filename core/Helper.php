@@ -1,5 +1,13 @@
 <?php 
 class Helper{
+    public static function checkArrayKeys($arr, $keys){
+        foreach($keys as $key){
+            if(!(array_key_exists($key, $arr))){
+                return array("status"=>FALSE, "key"=>$key);
+            }
+        }
+        return array("status"=>TRUE, "key"=>NULL);
+    }
     public static function userName($s) {
         $az = array('ş','Ş','ı','İ','ğ','Ğ','ü','Ü','ö','Ö','Ç','ç','Ə','ə');
         $eng = array('s','s','i','i','g','g','u','u','o','o','c','c','e','e');
