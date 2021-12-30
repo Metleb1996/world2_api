@@ -1,12 +1,16 @@
 <?php
-require_once "Helper.php";
 class RequestHandler{
     private $_resources = NULL;
     private $_data = NULL;
     private $_jsonArray = NULL;
     public function __construct(){
         $this->_resources = array();
-        $this->_data = json_decode(file_get_contents("php://input"));
+        if($_SERVER["REQUEST_METHOD"] == 'GET'){
+            $this->_data = $_GET;
+        }
+        else{
+            $this->_data = json_decode(file_get_contents("php://input"));
+        }
         $this->_jsonArray = array();
         $this->_jsonArray['_code'] = 200;
     }
